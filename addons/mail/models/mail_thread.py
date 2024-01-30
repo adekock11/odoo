@@ -1118,7 +1118,7 @@ class MailThread(models.AbstractModel):
         if strip_attachments:
             msg_dict.pop('attachments', None)
 
-        existing_msg_ids = self.env['mail.message'].search([('message_id', '=', msg_dict['message_id'])], limit=1)
+        existing_msg_ids = self.env['mail.message'].search([('message_id', '=', msg_dict['message_id'])])
         if existing_msg_ids:
             _logger.info('Ignored mail from %s to %s with Message-Id %s: found duplicated Message-Id during processing',
                          msg_dict.get('email_from'), msg_dict.get('to'), msg_dict.get('message_id'))
